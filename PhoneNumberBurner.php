@@ -59,7 +59,7 @@
 		public function __construct($targets = [], $messages = [], $random_strings = []) {
 			if (count($targets) > 0) $this -> targets = $targets;
 			if (count($messages) > 0) $this -> messages = $messages;
-			if (count($random_strings) > 0) $$this -> random_strings = $random_strings;
+			if (count($random_strings) > 0) $this -> random_strings = $random_strings;
 		}
 
 		/**
@@ -74,23 +74,25 @@
 
 			// Sends the message to each target.
 			for ($i = 0; $i < $n; ++$i) {
-				foreach ($targets as $target) {
-		
-					// Generates a random subject and message to be sent.
-					$message = $messages[rand(0, count($messages) - 1)];
+				
+				// Generates a random message to be sent to each target.
+				$message = $this -> messages[rand(0, count($this -> messages) - 1)];
 					
-					// Generates a random return address.
-					$return_address = sprintf("%s%ld@%s%ld.com", 
-							$random_strings[rand(0, count($random_strings) - 1)], 
-							rand(999999, 9999999), 
-							$random_strings[rand(0, count($random_strings) - 1)], 
-							rand(999999, 9999999));
+				// Generates a random return address.
+				$return_address = sprintf("%s%ld@%s%ld.com", 
+					$this -> random_strings[rand(0, count($this -> random_strings) - 1)], 
+					rand(999999, 9999999), 
+					$this -> random_strings[rand(0, count($this -> random_strings) - 1)], 
+					rand(999999, 9999999)
+				);
 					
-					// Adjusts message header to modify the return address.
-					$headers = sprintf("'From: %s\r\nReply-To: %s", $return_address, $return_address);
+				// Adjusts message header to modify the return address.
+				$headers = sprintf("'From: %s\r\nReply-To: %s", $return_address, $return_address);
+				
+				foreach ($this -> targets as $target) {
 					
 					// Sends a message to each carrier to be thorough.
-					foreach ($carriers as $carrier) {
+					foreach ($this -> carriers as $carrier) {
 						$target = sprintf("%s@%s", $target, $carrier);
 						mail($target, "", $message, $headers); // Arg 2 no subject.
 					}
