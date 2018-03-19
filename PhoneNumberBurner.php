@@ -63,6 +63,7 @@
 		 */
 		public function attack($n = 3000) {
 
+			// Check for missing requirements and set defaults if necessary/possible.
 			if (count($this -> targets) < 1) {
 				echo "No targets specified for attack. Hijacking your server instead...";
 				return;
