@@ -10,7 +10,12 @@ This project demonstrates how simple it is to burn a phone number and also descr
 		$targets  = ["8005551234", "8005556789", ];
 		$messages = ["Hello World A", "Hello World B", "Hello World C", ];
 		
-		$ddos = new PhoneNumberBurner($targets, $messages);
-		$ddos -> attack(5000);
+		$dos = new PhoneNumberBurner($targets, $messages);
+		$dos -> attack(5000);
 		
 	?>
+	
+# Mitigation
+ 
+ Apple iPhones at least allow you to filter out phone numbers not in contacts. Sadly,
+ not enough people know of this simple fix.
