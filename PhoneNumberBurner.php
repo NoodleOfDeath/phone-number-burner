@@ -87,7 +87,7 @@
 				);
 					
 				// Adjusts message header to modify the return address.
-				$headers = sprintf("'From: %s\r\nReply-To: %s", $return_address, $return_address);
+				$headers = sprintf("From: %s\r\nReply-To: %s", $return_address, $return_address);
 				
 				foreach ($this -> targets as $target) {
 					
