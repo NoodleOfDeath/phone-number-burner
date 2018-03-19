@@ -17,7 +17,7 @@
 	 */
 	class PhoneNumberBurner {
 
-		/** Targets phone number(s) to burn. */
+		/** Target phone number(s) to burn. */
 		private $targets = ["8005551234", ];
 		
 		/** Messages to randomly send the targets. */
@@ -51,14 +51,14 @@
 		];
 
 		/**
-		 * Constructs a new PhoneNumberBurner with an initial set of targets.
+		 * Constructs a new PhoneNumberBurner instance with an initial set of targets.
 		 * @param $targets [string] List of targets to attack.
 		 * @param $messages [string] List of messages to randomly send to targets.
 		 * @param $random_strings [string] List of strings to use to generate random return addresses.
 		 */
 		public function __construct($targets = [], $messages = [], $random_strings = []) {
 			if (count($targets) > 0) $this -> targets = $targets;
-			if (count($messages) > 0) $this -> messages = messages;
+			if (count($messages) > 0) $this -> messages = $messages;
 			if (count($random_strings) > 0) $$this -> random_strings = $random_strings;
 		}
 
