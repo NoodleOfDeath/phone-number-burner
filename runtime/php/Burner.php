@@ -15,7 +15,7 @@
 	 * @author NoodleOfDeath
 	 * 
 	 */
-	class PhoneNumberBurner {
+	class Burner {
 
 		/** Target phone number(s) to burn. */
 		private $targets = [];
@@ -42,7 +42,7 @@
 		];
 
 		/**
-		 * Constructs a new PhoneNumberBurner instance with an initial set of targets.
+		 * Constructs a new Burner instance with an initial set of targets.
 		 * @param $targets [string] List of targets to attack.
 		 * @param $messages [string] List of messages to randomly send to targets.
 		 * @param $random_strings [string] List of strings to use to generate random return addresses.
