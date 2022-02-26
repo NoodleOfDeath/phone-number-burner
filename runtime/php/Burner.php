@@ -69,15 +69,10 @@
         return;
       } else
       if (count($this -> messages) < 1) {
-        $this -> messages = ["HELLO WORLD",
-                 "Fucking christ, you couldn't even come up",
-                 "with even one creative message to send?", ];
+        $this -> messages = ["HELLO WORLD", "HELLO WORLD 2", "HELLO WORLD 3?", ];
       } else
       if (count($this -> random_strings) < 1) {
-        $this -> random_strings = ["default", 
-                 "random",
-                 "fucking",
-                 "strings", ];
+        $this -> random_strings = ["default", "random", "strings", ];
       }
       
       // One attack iteration to all targets.
