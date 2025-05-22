@@ -49,15 +49,9 @@
      */
     public function __construct($targets = [], $messages = [], $random_strings = []) {
       $this -> targets = $targets;
-      $this -> messages = $messages;
-      $this -> random_strings = $random_strings;
-      /* TODO: could use a local LLM to generate sentences */
-      if (count($this -> messages) < 1) {
-        $this -> messages = ["HELLO WORLD", "HELLO WORLD 2", "HELLO WORLD 3?", ];
-      }
-      if (count($this -> random_strings) < 1) {
-        $this -> random_strings = ["default", "random", "strings", ];
-      }
+      /* TODO: could use a local LLM to generate conherent sentences */
+      $this -> messages = count($messages) > 0 ? $messages : ["HELLO WORLD", "HELLO WORLD 2", "HELLO WORLD 3?", ];
+      $this -> random_strings = count($random_strings) > 0 ? $random_strings : ["default", "random", "strings", ];
     }
 
     /**
