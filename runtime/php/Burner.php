@@ -12,7 +12,7 @@
    * knowledge by other individuals, and I strongly advise against such
    * behavior.
    * 
-   * @author NoodleOfDeath
+   * @author NoodleOfDeath 
    * 
    */
   class Burner {
@@ -51,6 +51,13 @@
       $this -> targets = $targets;
       $this -> messages = $messages;
       $this -> random_strings = $random_strings;
+      /* TODO: could use a local LLM to generate sentences */
+      if (count($this -> messages) < 1) {
+        $this -> messages = ["HELLO WORLD", "HELLO WORLD 2", "HELLO WORLD 3?", ];
+      }
+      if (count($this -> random_strings) < 1) {
+        $this -> random_strings = ["default", "random", "strings", ];
+      }
     }
 
     /**
@@ -67,13 +74,7 @@
       if (count($this -> targets) < 1) {
         echo "No targets specified for attack. Hijacking your server instead...";
         return;
-      } else
-      if (count($this -> messages) < 1) {
-        $this -> messages = ["HELLO WORLD", "HELLO WORLD 2", "HELLO WORLD 3?", ];
-      } else
-      if (count($this -> random_strings) < 1) {
-        $this -> random_strings = ["default", "random", "strings", ];
-      }
+      } 
       
       // One attack iteration to all targets.
       for ($i = 0; $n < 0 || $i < $n; ++$i) {
